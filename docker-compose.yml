@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  doctor-service:
+    build: .
+    ports:
+      - "8002:8002"
+    environment:
+      - PORT=8002
+      - DATABASE_URL=sqlite:///./doctor.db
+      - DOCTOR_SERVICE_HOST=0.0.0.0
+      - DOCTOR_SERVICE_PORT=8002
+    volumes:
+      - .:/app
+      - doctor-db:/data
+
+volumes:
+  doctor-db:
+
